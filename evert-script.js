@@ -316,10 +316,8 @@ function updateImageSources()
 			faceId = faceId.pop();
 
 			// get barycenter of last hit wall
-			// post('image ' + count + ' id ' + id + ' faceId ' + faceId + '\n');
 			var xyz = getTriangleCenter(faces[faceId].triangle);
 			pos = getRelPos(xyz, rcvTransform);
-			post('image ' + count + ' id ' + id + ' faceId ' + faceId + ' facePos ' + arrayRound(pos, roundFactor) + '\n');
 
 			// update image position: scattered (last encountered wall barycenter)
 			outlet(0,"/image", count, "xyz", "scattered", pos);
@@ -657,6 +655,7 @@ function getMaxDelay(imgs)
 	{ 
 		maxDelay = Math.max( maxDelay, imgs[id].length / SOUND_SPEED); 
 	}
+	return maxDelay;
 }
 
 
@@ -704,21 +703,21 @@ function printImages(imgDict, header)
 
 	post2("number " + Object.keys(imgDict).length + "\n");
 
-	// long version 
-	for (var id in imgDict)
-	{
-		post2(id + " length: " + floatRound(imgDict[id].length, roundFactor) + ", xyz " + arrayRound(imgDict[id].xyz, roundFactor) + "\n");
-		post2(tab + "reflectance " + arrayRound(imgDict[id].reflectance, roundFactor) + "\n");
-		post2(tab + "specular " + arrayRound(imgDict[id].specular, roundFactor) + "\n");
-		post2(tab + "scattered " + arrayRound(imgDict[id].scattered, roundFactor) + "\n");
-	}
-
-	// // short version 
-	// var bandId = 0;
+	// // long version 
 	// for (var id in imgDict)
 	// {
-	// 	post2(id + " length: " + floatRound(imgDict[id].length, roundFactor) + ", xyz " + arrayRound(imgDict[id].xyz, 2) + ", refl " + floatRound(imgDict[id].reflectance[bandId], 2) + ", spec " + floatRound(imgDict[id].specular[bandId], 2) + ", scat " + floatRound(imgDict[id].scattered[bandId], 2) + "\n");
+	// 	post2(id + " length: " + floatRound(imgDict[id].length, roundFactor) + ", xyz " + arrayRound(imgDict[id].xyz, roundFactor) + "\n");
+	// 	post2(tab + "reflectance " + arrayRound(imgDict[id].reflectance, roundFactor) + "\n");
+	// 	post2(tab + "specular " + arrayRound(imgDict[id].specular, roundFactor) + "\n");
+	// 	post2(tab + "scattered " + arrayRound(imgDict[id].scattered, roundFactor) + "\n");
 	// }
+
+	// short version 
+	var bandId = 0;
+	for (var id in imgDict)
+	{
+		post2(id + " length: " + floatRound(imgDict[id].length, roundFactor) + ", xyz " + arrayRound(imgDict[id].xyz, 2) + ", refl " + floatRound(imgDict[id].reflectance[bandId], 2) + ", spec " + floatRound(imgDict[id].specular[bandId], 2) + ", scat " + floatRound(imgDict[id].scattered[bandId], 2) + "\n");
+	}
 
 }
 
@@ -845,6 +844,13 @@ function arrayDbToA(a)
 {
 	var b = [];
 	for (var i = 0; i < a.length; i++){ b[i] = floatDbToA(a[i]); }
+	return b;
+}
+
+function arrayClip(a, vMin, vMax)
+{
+	var b = [];
+	for (var i = 0; i < a.length; i++){ b.push( Math.min( Math.max(a[i], vMin), vMax ) ); }
 	return b;
 }
 
