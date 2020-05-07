@@ -259,9 +259,11 @@ function bang()
 	// update fdn late
 	if( rt60.length > 0 ){ outlet(0,"/fdn/late/decay/times", rt60); }
 
-	// fdn late: delay offset
+	// fdn late: get mixing time and amplitude (for seamless stitching)
 	var tMix = getMixingTime();
 	outlet(0,"/fdn/late/roomoffset", tMix);
+	var gMix = getMixingAmplitude();
+	outlet(0,"/fdn/late/roomgain", gMix);
 
 	// fdn late: spatial distribution
 	// @todo: support multiple bands
@@ -639,13 +641,151 @@ function getNewFace()
 	};
 }
 
+function getMeanFreePath()
+{
+	// default if not enough info on room yet
+	if( roomVolume == 0 || roomArea == 0 ){ return 0; }
+
+	return 4 * roomVolume / roomArea;
+}
+
+function getMaxMixingTime()
+{
+	// default if not enough info on room yet
+	if( roomVolume == 0 || roomArea == 0 ){ return 0; }
+
+	return Math.sqrt(roomVolume) / 1000;
+	// return 3*(4*roomVolume/roomArea)/SOUND_SPEED; // other model
+}
+
 function getMixingTime()
 {
 	// default if not enough info on room yet
 	if( roomVolume == 0 || roomArea == 0 ){ return 0; }
 
-	 // get mixing time
-	return 3*(4*roomVolume/roomArea)/SOUND_SPEED;
+	// default if no source-images yet
+	if( Object.keys(images).length == 0 ){ return 0; } 
+
+	// get max mixing time
+	var tMixMax = getMaxMixingTime();
+
+	// get list of image sources ordered by time of arrival
+	var sortedImageIds = getSortedImageIds();
+
+	// compute max acceptable gap between image sources, to avoid stitching FDN 
+	// after a gap in image sources (i.e. to a lonely cluster of IS) if said gap
+	// is not explained by room geometry but rather a lack of IS order
+	var meanFreePath = getMeanFreePath();
+	var maxAcceptableGapDuration = meanFreePath / SOUND_SPEED;
+
+	// loop over images, check it passes test success (not lonely image)
+	// and use it to define mixing time if not reached tMixMax yet
+	var toa, toaNext, gapDuration;	
+	for (var imageId = 0; imageId < sortedImageIds.length; imageId++)
+	{
+		// get image source time of arrival 
+		toa = images[sortedImageIds[imageId]].length / SOUND_SPEED;
+
+		// stop searching if toa above max mixing time
+		if( toa > tMixMax ){ return tMixMax; }
+
+		// stop searching if image source is the last one
+		if( imageId == sortedImageIds.length-1 ){ return toa; }
+
+		// calculate gap between current and next image
+		toaNext = images[sortedImageIds[imageId+1]].length / SOUND_SPEED;
+		gapDuration = toaNext - toa;
+
+		// if gap duration too long, discard remaining cluster(s)
+		if( gapDuration > maxAcceptableGapDuration ){ return toa; }
+	}
+
+}
+
+// get max tail mixing gain (in dB)
+function getMaxMixingAmplitude()
+{
+	// get locals
+	var meanFreePath = getMeanFreePath();
+	var tMixMax = getMaxMixingTime();
+
+	// compute max acceptable gain (h)
+	// @todo: think: is it 10*log10 or 20*log10?
+	var gMixMax = 10*log10(1/(meanFreePath)) + tMixMax * (-60 / arrayMean(rt60));
+	// post("max tail gain: " + floatRound(gMixMax, 1) + "dB \n")
+
+	return gMixMax;
+}
+
+// get fdn mixing amplitude in dB
+function getMixingAmplitude()
+{
+
+	// default if not enough info on room yet
+	if( roomVolume == 0 || roomArea == 0 ){ return -60; }
+
+	// define searching time window (around mixing time)
+	var winDuration = 0.02; // in sec
+
+	// get list of image source in time window
+	var tMix = getMixingTime();
+	var toa, g, imageAmplitudes = [];
+	for (var id in images)
+	{
+		// get image time of arrival 
+		toa = images[id].length / SOUND_SPEED;
+
+		// is in time window?
+		if( toa > (tMix - winDuration / 2) && toa < (tMix + winDuration / 2) )
+		{
+			// @todo: think on this mean over specular and scattering...
+			g = ( arrayMean( images[id].specular ) + arrayMean( images[id].scattered ) ) / 2;
+			g = (1/images[id].length) * g; // take into account distance
+			
+			// convert to dB and store
+			g = floatAToDb(g);
+			imageAmplitudes.push( g );
+		}
+	}
+
+	// get max mixing amplitude
+	var gMixMax = getMaxMixingAmplitude();
+
+	// default value if empty 
+	if( imageAmplitudes.length == 0 ){ return gMixMax; }
+
+	// get average
+	var meanAmpl = arrayMean(imageAmplitudes);
+
+	// compensate for mixing time already taking toll on fdn gain
+	// @todo: make it freq band specific (then FDN init gain would have to be as well)
+	meanAmpl = meanAmpl + ( 60 / arrayMean(rt60) ) * tMix;
+
+	// return clipped value
+	return Math.min(meanAmpl, gMixMax);
+}
+
+
+// return an array of imgs id sorted based on path length (i.e. time of arrival)
+function getSortedImageIds()
+{
+	// Create items array
+	var idPathPairs = Object.keys(images).map(function(key) {
+		return [key, images[key].length];
+	});
+
+	// Sort the array based on the second element
+	idPathPairs.sort(function(first, second) {
+		return first[1]-second[1];
+	});
+
+	// keep only img ids
+	var ids = []
+	idPathPairs.forEach(function(item, index, array) {
+		ids.push(item[0]);
+	})
+	
+	return ids;
 }
 
 function getMaxDelay(imgs)
