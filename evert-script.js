@@ -32,7 +32,7 @@ var SOUND_SPEED = 343; // m/s
 var MAX_NUM_IMAGES = 100;
 var MAX_RT60_VALUE = 15; // in seconds
 
-var NUM_DEFAULT_IMG_SRC = 0;
+var NUM_DEFAULT_IMG_SRC = 0; // set to 0 to disable option
 var defaultDelays = [];
 
 var lateAnisotropicPos = [];
@@ -149,7 +149,7 @@ function processOscMsg(msgName, args)
 		images[id].length = msg[0];
 	}
 
-	// image reflectance
+	// image reflectance values 
 	if( headers[headers.length-1] == "reflectance" )
 	{
 		// create image if need be
@@ -160,7 +160,7 @@ function processOscMsg(msgName, args)
 		images[id].reflectance = arrayDbToA(msg);
 	}
 
-	// image specular
+	// image specular values 
 	if( headers[headers.length-1] == "specular" )
 	{
 		// create image if need be
@@ -171,7 +171,7 @@ function processOscMsg(msgName, args)
 		images[id].specular = msg;
 	}
 
-	// image scattered
+	// image scattered values 
 	if( headers[headers.length-1] == "scattered" )
 	{
 		// create image if need be
@@ -854,9 +854,16 @@ function arrayClip(a, vMin, vMax)
 	return b;
 }
 
+// @todo: check this 20, isn't it 10? 
 function floatDbToA(x)
 {
 	return Math.pow(10, x/20);
+}
+
+// @todo: check this 20, isn't it 10? 
+function floatAToDb(x)
+{
+	return 20*log10(x);
 }
 
 function floatRound(x, r)
@@ -886,12 +893,18 @@ function multMat33Vect3(mat, vec)
 	return [mat[0] * vec[0] + mat[3] * vec[1] + mat[6] * vec[2], mat[1] * vec[0] + mat[4] * vec[1] + mat[7] * vec[2], mat[3] * vec[0] + mat[5] * vec[1] + mat[8] * vec[2] ];
 }
 
+function log10(x)
+{
+	return Math.log(x) / Math.log(10);
+}
 
 
 /** to do
 
-make sure all variables are set up upon last message (e.g. last received path
+- make sure all variables are set up upon last message (e.g. last received path
 smaller than others will still )
+
+- remove placeholders image-sources, doesn't really work (FDN does the job as long as changing it's starting point live is not an issue)
 
 */
 
