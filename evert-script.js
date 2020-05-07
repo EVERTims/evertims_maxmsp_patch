@@ -540,15 +540,18 @@ function calculateDefaultImageSources()
 		// calculate image source path length
 		image.length = defaultDelays[iDelay] * SOUND_SPEED;
 
-		// calculate image source power
-		for (var iFreq = 0; iFreq < freqBandCenters.length; iFreq++) 
-		{
-			// here specular is abused, storing both distance gain and specular info
-			var tmp = defaultDelays[iDelay] * (-60 / rt60[iFreq]);
-			image.specular[iFreq] = floatDbToA( tmp );
-			
-			// image.specular[iFreq] = 1/(Math.pow(image.length, 1.3));
-		}
+		// // calculate image source power v1
+		// for (var iFreq = 0; iFreq < freqBandCenters.length; iFreq++) 
+		// {
+		// 	// here specular is abused, storing both distance gain and specular info
+		// 	var tmp = defaultDelays[iDelay] * (-60 / rt60[iFreq]);
+		// 	image.specular[iFreq] = floatDbToA( tmp );
+		// }
+
+		// calculate image source power v2
+		// here specular is abused, storing both distance gain and specular info
+		image.specular = arrayMult( [1, 1, 1, 1, 1, 1, 1, 1], 1/(Math.pow(image.length, 0.6)) );
+		image.specular = arrayClip(image.specular, 0.0, 1.0);
 
 		// arbitrary spread of image position based on delay (the longer the further)
 		// @todo: spread in the spherical domain
