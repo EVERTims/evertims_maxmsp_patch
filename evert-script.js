@@ -741,12 +741,23 @@ function getMixingAmplitude()
 		// is in time window?
 		if( toa > (tMix - winDuration / 2) && toa < (tMix + winDuration / 2) )
 		{
-			// @todo: think on this mean over specular and scattering...
-			g = ( arrayMean( images[id].specular ) + arrayMean( images[id].scattered ) ) / 2;
-			g = (1/images[id].length) * g; // take into account distance
+			// init locals
+			g = 1.0;
 			
-			// convert to dB and store
+			// specular/scattering for all but direct path
+			if( id != "direct" )
+			{
+				// @todo: think on this mean over specular and scattering...
+				g = ( arrayMean( images[id].specular ) + arrayMean( images[id].scattered ) ) / 2;
+			}
+			
+			// distance attenuation
+			g = (1/images[id].length) * g;
+			
+			// convert to dB
 			g = floatAToDb(g);
+			
+			// store
 			imageAmplitudes.push( g );
 		}
 	}
