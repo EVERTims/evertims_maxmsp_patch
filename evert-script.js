@@ -1025,26 +1025,28 @@ function floatRound(x, r)
 	return x.toFixed(r);
 }
 
+// see e.g. https://stackoverflow.com/questions/2624422/efficient-4x4-matrix-inverse-affine-transform
 function getRelPos(posA, transform)
 {
 	var posB = transform.slice(12,15);
 	var rotB = transform.slice(0,3).concat(transform.slice(4,7)).concat(transform.slice(8,11));
 	
-	rotB = transformMat33(rotB);
+	rotB = transposeMat33(rotB);
 	var pos = arrayDiff(posA, posB);
+	
 	pos = multMat33Vect3(rotB, pos);
 
 	return pos;
 }
 
-function transformMat33(mat)
+function transposeMat33(mat)
 {
 	return [mat[0], mat[3], mat[6], mat[1], mat[4], mat[7], mat[2], mat[5], mat[8]];
 }
 
 function multMat33Vect3(mat, vec)
 {
-	return [mat[0] * vec[0] + mat[3] * vec[1] + mat[6] * vec[2], mat[1] * vec[0] + mat[4] * vec[1] + mat[7] * vec[2], mat[3] * vec[0] + mat[5] * vec[1] + mat[8] * vec[2] ];
+	return [mat[0] * vec[0] + mat[3] * vec[1] + mat[6] * vec[2], mat[1] * vec[0] + mat[4] * vec[1] + mat[7] * vec[2], mat[2] * vec[0] + mat[5] * vec[1] + mat[8] * vec[2] ];
 }
 
 function log10(x)
