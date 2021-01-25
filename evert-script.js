@@ -442,16 +442,18 @@ function updateRoomResponseTime()
 	    // rt60[iFreq] = 0.161 * roomVolume / roomAreaWeighted[iFreq];
 
 	    // get frequency specific RT60 from Eyring formula
-	    var alpha = arraySum(roomAreaWeighted) / roomArea;
+	    var alpha = roomAreaWeighted[iFreq] / roomArea;
 	    // post("alpha " + iFreq + " " + alpha + "\n");
 	    var A = roomArea * (-2.3 * Math.log(1 - alpha)/Math.log(10))
-	    rt60[iFreq] = 0.161 * roomVolume / roomAreaWeighted[iFreq];
+		rt60[iFreq] = 0.161 * roomVolume / A;
 
 	    // avoid infinite reverb (to discuss if we allow such behaviors)
 	    rt60[iFreq] = Math.min( rt60[iFreq], MAX_RT60_VALUE );
 	}
 
+	// post("freq: " + freqBandCenters + "\n");
 	// post("rt60: " + arrayRound(rt60, roundFactor) + "\n");
+	
 }
 
 function updateLateSpatialDistribution() 
