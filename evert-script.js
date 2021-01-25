@@ -901,22 +901,40 @@ function printScene()
 // @todo: double check method
 function getInterpAbs(arrayAbs, arrayFreq, freq)
 {
-	// get nearest neighbor
-	var id = 0;
-
-	for (var i = 0; i < (arrayFreq.length-1); i++) 
+	var abs;
+	
+	// extrapolate if freq outside arrayFreq (above)
+	if( freq >= arrayFreq[arrayFreq.length-1] )
 	{
-		if( freq > arrayFreq[i] && freq <= arrayFreq[i+1] )
-		{
-			id = i;
-			continue;
-		}
+		abs = arrayAbs[arrayFreq.length-1];
 	}
 
-	// linear interpolation 
-	g = (freq - arrayFreq[id]) / (arrayFreq[id+1] - arrayFreq[id]);
-	var abs = arrayAbs[id] * (1-g) + arrayAbs[id+1] * g;
+	// extrapolate if freq outside arrayFreq (below)
+	else if ( freq <= arrayFreq[0] )
+	{
+		abs = arrayAbs[0];
+	}
 
+	// interpolate if freq in arrayFreq (above)
+	else
+	{
+		// get nearest neighbor
+		var id = 0;
+
+		for (var i = 0; i < (arrayFreq.length-1); i++) 
+		{
+			if( freq > arrayFreq[i] && freq <= arrayFreq[i+1] )
+			{
+				id = i;
+				continue;
+			}
+		}
+
+		// linear interpolation 
+		g = (freq - arrayFreq[id]) / (arrayFreq[id+1] - arrayFreq[id]);
+		abs = arrayAbs[id] * (1-g) + arrayAbs[id+1] * g;
+	}
+	
 	return abs;
 }
 
