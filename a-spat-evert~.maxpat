@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 1,
+			"minor" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -38,6 +38,46 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"focusbordercolor" : [ 0.0, 0.019608, 0.078431, 0.0 ],
+					"id" : "obj-28",
+					"maxclass" : "live.dial",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 345.0, 41.0, 44.0, 48.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_mmin" : -60.0,
+							"parameter_longname" : "live.dial[5]",
+							"parameter_mmax" : 30.0,
+							"parameter_shortname" : " ",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 4
+						}
+
+					}
+,
+					"varname" : "live.dial[3]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 11.0,
+					"id" : "obj-29",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 345.0, 91.0, 84.0, 21.0 ],
+					"text" : "/reverb/gain $1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-79",
 					"maxclass" : "newobj",
@@ -104,11 +144,11 @@
 					"patching_rect" : [ 244.0, 91.0, 40.0, 20.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_longname" : "live.text[31]",
 							"parameter_mmax" : 1,
 							"parameter_shortname" : "live.text",
 							"parameter_enum" : [ "val1", "val2" ],
-							"parameter_type" : 2,
-							"parameter_longname" : "live.text[31]"
+							"parameter_type" : 2
 						}
 
 					}
@@ -142,8 +182,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 1,
+							"minor" : 0,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -389,13 +429,13 @@
 									"patching_rect" : [ 828.5, 395.5, 44.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.dial[58]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 20000.0,
 											"parameter_initial" : [ 10000.0 ],
 											"parameter_shortname" : " ",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 3,
-											"parameter_longname" : "live.dial[58]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 3
 										}
 
 									}
@@ -429,13 +469,13 @@
 									"patching_rect" : [ 763.5, 421.0, 41.0, 20.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.toggle[15]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 1,
 											"parameter_initial" : [ 1.0 ],
 											"parameter_shortname" : "live.toggle",
 											"parameter_enum" : [ "val1", "val2" ],
-											"parameter_type" : 2,
-											"parameter_longname" : "live.toggle[15]",
-											"parameter_initial_enable" : 1
+											"parameter_type" : 2
 										}
 
 									}
@@ -471,8 +511,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 1,
-											"revision" : 1,
+											"minor" : 0,
+											"revision" : 8,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -564,12 +604,12 @@
 													"patching_rect" : [ 352.5, 223.5, 44.0, 48.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_longname" : "live.dial[55]",
 															"parameter_mmax" : 20000.0,
 															"parameter_initial" : [ 8000.0 ],
 															"parameter_shortname" : " ",
 															"parameter_type" : 0,
-															"parameter_unitstyle" : 3,
-															"parameter_longname" : "live.dial[55]"
+															"parameter_unitstyle" : 3
 														}
 
 													}
@@ -604,12 +644,12 @@
 													"patching_rect" : [ 292.5, 223.5, 44.0, 48.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_longname" : "live.dial[53]",
 															"parameter_mmax" : 20000.0,
 															"parameter_initial" : [ 250.0 ],
 															"parameter_shortname" : " ",
 															"parameter_type" : 0,
-															"parameter_unitstyle" : 3,
-															"parameter_longname" : "live.dial[53]"
+															"parameter_unitstyle" : 3
 														}
 
 													}
@@ -704,13 +744,13 @@
 													"patching_rect" : [ 220.0, 215.0, 44.0, 48.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_mmin" : 0.1,
+															"parameter_longname" : "live.dial[52]",
 															"parameter_mmax" : 10.0,
 															"parameter_initial" : [ 0.5 ],
 															"parameter_shortname" : "trh",
 															"parameter_type" : 0,
-															"parameter_unitstyle" : 1,
-															"parameter_mmin" : 0.1,
-															"parameter_longname" : "live.dial[52]"
+															"parameter_unitstyle" : 1
 														}
 
 													}
@@ -745,13 +785,13 @@
 													"patching_rect" : [ 160.0, 215.0, 44.0, 48.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_mmin" : 0.1,
+															"parameter_longname" : "live.dial[50]",
 															"parameter_mmax" : 10.0,
 															"parameter_initial" : [ 1.0 ],
 															"parameter_shortname" : "trm",
 															"parameter_type" : 0,
-															"parameter_unitstyle" : 1,
-															"parameter_mmin" : 0.1,
-															"parameter_longname" : "live.dial[50]"
+															"parameter_unitstyle" : 1
 														}
 
 													}
@@ -786,13 +826,13 @@
 													"patching_rect" : [ 100.0, 215.0, 44.0, 48.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_mmin" : 0.1,
+															"parameter_longname" : "live.dial[51]",
 															"parameter_mmax" : 10.0,
 															"parameter_initial" : [ 1.0 ],
 															"parameter_shortname" : "trl",
 															"parameter_type" : 0,
-															"parameter_unitstyle" : 1,
-															"parameter_mmin" : 0.1,
-															"parameter_longname" : "live.dial[51]"
+															"parameter_unitstyle" : 1
 														}
 
 													}
@@ -827,13 +867,13 @@
 													"patching_rect" : [ 39.0, 183.0, 44.0, 48.0 ],
 													"saved_attribute_attributes" : 													{
 														"valueof" : 														{
+															"parameter_mmin" : 20.0,
+															"parameter_longname" : "live.dial[54]",
 															"parameter_mmax" : 30000.0,
 															"parameter_initial" : [ 1800.0 ],
 															"parameter_shortname" : " ",
 															"parameter_type" : 0,
-															"parameter_unitstyle" : 2,
-															"parameter_mmin" : 20.0,
-															"parameter_longname" : "live.dial[54]"
+															"parameter_unitstyle" : 2
 														}
 
 													}
@@ -1011,8 +1051,8 @@
 , 											{
 												"name" : "Default M4L",
 												"default" : 												{
-													"fontsize" : [ 11.0 ],
 													"patchlinecolor" : [ 0.290196, 0.309804, 0.301961, 0.85 ],
+													"fontsize" : [ 11.0 ],
 													"fontname" : [ "Arial Bold" ]
 												}
 ,
@@ -1022,8 +1062,8 @@
 , 											{
 												"name" : "Default M4L Poletti",
 												"default" : 												{
-													"fontsize" : [ 10.0 ],
 													"patchlinecolor" : [ 0.290196, 0.309804, 0.301961, 0.85 ],
+													"fontsize" : [ 10.0 ],
 													"fontname" : [ "Arial Bold" ]
 												}
 ,
@@ -1035,7 +1075,6 @@
 												"default" : 												{
 													"fontface" : [ 1 ],
 													"fontsize" : [ 11.0 ],
-													"fontname" : [ "Arial" ],
 													"bgfillcolor" : 													{
 														"type" : "gradient",
 														"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -1044,7 +1083,8 @@
 														"angle" : 270.0,
 														"proportion" : 0.39
 													}
-
+,
+													"fontname" : [ "Arial" ]
 												}
 ,
 												"parentstyle" : "",
@@ -1071,7 +1111,6 @@
 												"name" : "jbb",
 												"default" : 												{
 													"fontsize" : [ 9.0 ],
-													"fontname" : [ "Arial" ],
 													"bgfillcolor" : 													{
 														"type" : "gradient",
 														"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -1080,7 +1119,8 @@
 														"angle" : 270.0,
 														"proportion" : 0.39
 													}
-
+,
+													"fontname" : [ "Arial" ]
 												}
 ,
 												"parentstyle" : "",
@@ -1280,14 +1320,14 @@
 									"patching_rect" : [ 299.0, 349.0, 44.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmin" : 20.0,
+											"parameter_longname" : "live.dial[61]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 30000.0,
 											"parameter_initial" : [ 1800.0 ],
 											"parameter_shortname" : " ",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 2,
-											"parameter_mmin" : 20.0,
-											"parameter_longname" : "live.dial[61]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 2
 										}
 
 									}
@@ -1338,14 +1378,14 @@
 									"patching_rect" : [ 191.0, 387.5, 44.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmin" : 3.0,
+											"parameter_longname" : "live.dial[59]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 40.0,
 											"parameter_initial" : [ 9.0 ],
 											"parameter_shortname" : " ",
 											"parameter_type" : 1,
-											"parameter_unitstyle" : 0,
-											"parameter_mmin" : 3.0,
-											"parameter_longname" : "live.dial[59]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 0
 										}
 
 									}
@@ -1406,11 +1446,11 @@
 									"patching_rect" : [ 371.0, 556.5, 44.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.dial[60]",
 											"parameter_mmax" : 1000.0,
 											"parameter_shortname" : " ",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 2,
-											"parameter_longname" : "live.dial[60]"
+											"parameter_unitstyle" : 2
 										}
 
 									}
@@ -1552,11 +1592,11 @@
 									"presentation_rect" : [ 210.0, 489.0, 47.0, 20.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.text[29]",
 											"parameter_mmax" : 1,
 											"parameter_shortname" : "live.text",
 											"parameter_enum" : [ "val1", "val2" ],
-											"parameter_type" : 2,
-											"parameter_longname" : "live.text[29]"
+											"parameter_type" : 2
 										}
 
 									}
@@ -1622,11 +1662,11 @@
 									"patching_rect" : [ 1183.0, 419.0, 40.0, 20.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.text[30]",
 											"parameter_mmax" : 1,
 											"parameter_shortname" : "live.text",
 											"parameter_enum" : [ "val1", "val2" ],
-											"parameter_type" : 2,
-											"parameter_longname" : "live.text[30]"
+											"parameter_type" : 2
 										}
 
 									}
@@ -1649,12 +1689,12 @@
 									"patching_rect" : [ 1066.0, 391.0, 44.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmin" : -60.0,
+											"parameter_longname" : "live.dial[64]",
 											"parameter_mmax" : 30.0,
 											"parameter_shortname" : " ",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 4,
-											"parameter_mmin" : -60.0,
-											"parameter_longname" : "live.dial[64]"
+											"parameter_unitstyle" : 4
 										}
 
 									}
@@ -1726,14 +1766,14 @@
 									"patching_rect" : [ 990.0, 116.5, 62.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmin" : 10.0,
+											"parameter_longname" : "live.dial[62]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 2000.0,
 											"parameter_initial" : [ 200 ],
 											"parameter_shortname" : " ",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 2,
-											"parameter_mmin" : 10.0,
-											"parameter_longname" : "live.dial[62]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 2
 										}
 
 									}
@@ -1810,13 +1850,13 @@
 									"patching_rect" : [ 660.5, 149.5, 15.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.toggle[11]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 1,
 											"parameter_initial" : [ 1.0 ],
 											"parameter_shortname" : "live.toggle[8]",
 											"parameter_enum" : [ "off", "on" ],
-											"parameter_type" : 2,
-											"parameter_longname" : "live.toggle[11]",
-											"parameter_initial_enable" : 1
+											"parameter_type" : 2
 										}
 
 									}
@@ -1865,13 +1905,13 @@
 									"patching_rect" : [ 560.5, 149.5, 15.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.toggle[9]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 1,
 											"parameter_initial" : [ 1.0 ],
 											"parameter_shortname" : "live.toggle[8]",
 											"parameter_enum" : [ "off", "on" ],
-											"parameter_type" : 2,
-											"parameter_longname" : "live.toggle[9]",
-											"parameter_initial_enable" : 1
+											"parameter_type" : 2
 										}
 
 									}
@@ -1921,14 +1961,14 @@
 									"patching_rect" : [ 440.0, 116.5, 44.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmin" : 0.1,
+											"parameter_longname" : "live.dial[63]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 10.0,
 											"parameter_initial" : [ 1.0 ],
 											"parameter_shortname" : " ",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 1,
-											"parameter_mmin" : 0.1,
-											"parameter_longname" : "live.dial[63]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 1
 										}
 
 									}
@@ -1992,13 +2032,13 @@
 									"patching_rect" : [ 874.0, 140.0, 44.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.numbox[5]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 50000.0,
 											"parameter_initial" : [ 500 ],
 											"parameter_shortname" : "live.numbox[2]",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 0,
-											"parameter_longname" : "live.numbox[5]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 0
 										}
 
 									}
@@ -2042,13 +2082,13 @@
 									"patching_rect" : [ 800.0, 140.0, 60.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.toggle[10]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 5,
 											"parameter_initial" : [ 0 ],
 											"parameter_shortname" : "live.toggle[2]",
 											"parameter_enum" : [ "SN3D", "N3D", "FuMa", "SN2D", "N2D", "MaxN" ],
-											"parameter_type" : 2,
-											"parameter_longname" : "live.toggle[10]",
-											"parameter_initial_enable" : 1
+											"parameter_type" : 2
 										}
 
 									}
@@ -2097,13 +2137,13 @@
 									"patching_rect" : [ 310.0, 140.0, 100.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.menu[6]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 8,
 											"parameter_initial" : [ 3 ],
 											"parameter_shortname" : "live.menu",
 											"parameter_enum" : [ "nearest", "linear", "lagrange3", "allpass", "nearestXfade", "hermite3", "watte3", "bspline3", "parabolic" ],
-											"parameter_type" : 2,
-											"parameter_longname" : "live.menu[6]",
-											"parameter_initial_enable" : 1
+											"parameter_type" : 2
 										}
 
 									}
@@ -2153,13 +2193,13 @@
 									"patching_rect" : [ 179.0, 116.0, 62.0, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.dial[56]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 100.0,
 											"parameter_initial" : [ 50.0 ],
 											"parameter_shortname" : "crossfade",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 2,
-											"parameter_longname" : "live.dial[56]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 2
 										}
 
 									}
@@ -2235,15 +2275,15 @@
 									"patching_rect" : [ 40.0, 118.0, 67.5, 48.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_units" : "m/sec",
+											"parameter_mmin" : 50.0,
+											"parameter_longname" : "live.dial[57]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 500.0,
 											"parameter_initial" : [ 343.300000000000011 ],
 											"parameter_shortname" : "velocity",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 9,
-											"parameter_units" : "m/sec",
-											"parameter_mmin" : 50.0,
-											"parameter_longname" : "live.dial[57]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 9
 										}
 
 									}
@@ -2760,8 +2800,8 @@
 , 							{
 								"name" : "Default M4L",
 								"default" : 								{
-									"fontsize" : [ 11.0 ],
 									"patchlinecolor" : [ 0.290196, 0.309804, 0.301961, 0.85 ],
+									"fontsize" : [ 11.0 ],
 									"fontname" : [ "Arial Bold" ]
 								}
 ,
@@ -2771,8 +2811,8 @@
 , 							{
 								"name" : "Default M4L Poletti",
 								"default" : 								{
-									"fontsize" : [ 10.0 ],
 									"patchlinecolor" : [ 0.290196, 0.309804, 0.301961, 0.85 ],
+									"fontsize" : [ 10.0 ],
 									"fontname" : [ "Arial Bold" ]
 								}
 ,
@@ -2784,7 +2824,6 @@
 								"default" : 								{
 									"fontface" : [ 1 ],
 									"fontsize" : [ 11.0 ],
-									"fontname" : [ "Arial" ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -2793,7 +2832,8 @@
 										"angle" : 270.0,
 										"proportion" : 0.39
 									}
-
+,
+									"fontname" : [ "Arial" ]
 								}
 ,
 								"parentstyle" : "",
@@ -2820,7 +2860,6 @@
 								"name" : "jbb",
 								"default" : 								{
 									"fontsize" : [ 9.0 ],
-									"fontname" : [ "Arial" ],
 									"bgfillcolor" : 									{
 										"type" : "gradient",
 										"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -2829,7 +2868,8 @@
 										"angle" : 270.0,
 										"proportion" : 0.39
 									}
-
+,
+									"fontname" : [ "Arial" ]
 								}
 ,
 								"parentstyle" : "",
@@ -2923,6 +2963,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-53", 0 ],
 					"source" : [ "obj-101", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-29", 0 ]
 				}
 
 			}
@@ -3023,8 +3077,8 @@
 , 			{
 				"name" : "Default M4L",
 				"default" : 				{
-					"fontsize" : [ 11.0 ],
 					"patchlinecolor" : [ 0.290196, 0.309804, 0.301961, 0.85 ],
+					"fontsize" : [ 11.0 ],
 					"fontname" : [ "Arial Bold" ]
 				}
 ,
@@ -3034,8 +3088,8 @@
 , 			{
 				"name" : "Default M4L Poletti",
 				"default" : 				{
-					"fontsize" : [ 10.0 ],
 					"patchlinecolor" : [ 0.290196, 0.309804, 0.301961, 0.85 ],
+					"fontsize" : [ 10.0 ],
 					"fontname" : [ "Arial Bold" ]
 				}
 ,
@@ -3047,7 +3101,6 @@
 				"default" : 				{
 					"fontface" : [ 1 ],
 					"fontsize" : [ 11.0 ],
-					"fontname" : [ "Arial" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -3056,7 +3109,8 @@
 						"angle" : 270.0,
 						"proportion" : 0.39
 					}
-
+,
+					"fontname" : [ "Arial" ]
 				}
 ,
 				"parentstyle" : "",
@@ -3088,7 +3142,6 @@
 				"name" : "jbb",
 				"default" : 				{
 					"fontsize" : [ 9.0 ],
-					"fontname" : [ "Arial" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -3097,7 +3150,8 @@
 						"angle" : 270.0,
 						"proportion" : 0.39
 					}
-
+,
+					"fontname" : [ "Arial" ]
 				}
 ,
 				"parentstyle" : "",
