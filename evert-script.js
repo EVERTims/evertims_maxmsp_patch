@@ -771,12 +771,20 @@ function getMixingAmplitude()
 	if( imageAmplitudes.length == 0 ){ return gMixMax; }
 
 	// get average
-	var meanAmpl = arrayMean(imageAmplitudes);
+	// var meanAmpl = arrayMean(imageAmplitudes);
+	var meanAmpl = arrayMedian(imageAmplitudes);
+	
+	// add gain so that FDN first samples are somewhat close to 1
+	// @todo: characterize init FDN gain, REMOVE THIS LINE
+	meanAmpl += 14;
 
-	// compensate for mixing time already taking toll on fdn gain
-	// @todo: make it freq band specific (then FDN init gain would have to be as well)
-	meanAmpl = meanAmpl + ( 60 / arrayMean(rt60) ) * tMix;
-
+	// // compensate for mixing time already taking toll on fdn gain
+	// // @todo: make it freq band specific (then FDN init gain would have to be as well)
+	// meanAmpl = meanAmpl + ( 60 / arrayMean(rt60) ) * tMix;
+	//
+	// // no "toll" taken on fdn gain when delay definition based on "roomOffset" parameter
+	// // lines above only useful if gain incorporated to fdn delays directly
+	
 	// return clipped value
 	return Math.min(meanAmpl, gMixMax);
 }
@@ -962,10 +970,34 @@ function arrayMean(a)
 	return arraySum(a) / a.length;
 }
 
+function arrayMedian(a) 
+{
+	a.sort(function(a, b){return a-b})
+	var val, id;
+	if( (a.length % 2) === 0 )
+	{
+		id = a.length / 2;
+		val =  (a[id-1] + a[id] ) / 2.0;
+	}
+	else
+	{
+		id = Math.floor( a.length / 2 );
+		val = a[id];
+	}
+
+	// post("array: " + arrayRound(a, roundFactor) + "\n");
+	// post("length: " + a.length + ", id median: " + id + ", val " + val + "\n");
+
+	return val;
+}
+
 function arraySum(a)
 {
 	var sum = 0;
-	for (var i = 0; i < a.length; i++){ sum += a[i]; }
+	for (var i = 0; i < a.length; i++)
+	{ 
+		if( !isNaN(a[i]) ){ sum += a[i]; }
+	}
 	return sum;	
 }
 
