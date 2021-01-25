@@ -1080,10 +1080,16 @@ function floatRound(x, r)
 // see e.g. https://stackoverflow.com/questions/2624422/efficient-4x4-matrix-inverse-affine-transform
 function getRelPos(posA, transform)
 {
-	var posB = transform.slice(12,15);
+	// old flattening convention 
+	// var posB = transform.slice(12,15);
+	// var rotB = transform.slice(0,3).concat(transform.slice(4,7)).concat(transform.slice(8,11));
+	// rotB = transposeMat33(rotB);
+
+	// new flattening convention
+	var posB = [transform[3], transform[7], transform[11]];
 	var rotB = transform.slice(0,3).concat(transform.slice(4,7)).concat(transform.slice(8,11));
+
 	
-	rotB = transposeMat33(rotB);
 	var pos = arrayDiff(posA, posB);
 	
 	pos = multMat33Vect3(rotB, pos);
