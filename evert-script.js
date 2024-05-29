@@ -7,7 +7,7 @@ var tab = "       ";
 var roundFactor = 2;
 
 // init locals
-var freqBandLimits = [212, 425, 850, 1700, 3300, 6000, 12800];
+// var freqBandLimits = [212, 425, 850, 1700, 3300, 6000, 12800];
 var freqBandCenters = [125, 250, 500, 1000, 2000, 4000, 8000, 16000];
 var roomAreaWeighted = [0, 0, 0, 0, 0, 0, 0, 0];
 var imageDefaultPosition = [0, 1, 0];
@@ -74,20 +74,16 @@ function processOscMsg(msgName, args)
 			if( materials[ name ] == undefined ){ materials[ name ] = {}; }
 		}
 		
-		// material frequency: assign 
-		if( headers[2] == "frequencies" )
-		{
-			name = headers[1];
-			// post("mat freq " + name + "\n");
-			materials[ name ]["freq"] = msg;
-		}
-
 		// material absorption: assign
 		if( headers[2] == "absorption" )
 		{
 			name = headers[1];
 			// post("mat abs " + name + "\n");
 			materials[ name ]["abs"] = msg;
+
+			// hardcoded number of bands for now
+			if( msg.length != freqBandCenters.length ){ post("WARNING: ONLY SUPPORT 8 BAND MATERIALS AT THE MOMENT \n"); }
+			materials[ name ]["freq"] = freqBandCenters;
 		}
 	}
 
@@ -283,12 +279,12 @@ function bang()
 // init spat5 parameters
 function updateStatic()
 {
-	// num bands
-	outlet(0,"/fdn/all/band/number", freqBandCenters.length);
+	// // num bands
+	// outlet(0,"/fdn/all/band/number", freqBandCenters.length);
 
-	// frequency bands limits
-	outlet(0,"/fdn/all/freq/limits", freqBandLimits);
-	outlet(0,"/images/freq/centers", freqBandCenters);
+	// // frequency bands limits
+	// outlet(0,"/fdn/all/freq/limits", freqBandLimits);
+	// outlet(0,"/images/freq/centers", freqBandCenters);
 }
 
 
@@ -395,6 +391,13 @@ function updateRoomArea()
 		// discard if face not completely defined (should not be necessary thanks to isDefinedRoom check in updateRoom() method )
 		// if( matName == undefined || triangle.length == 0 ){ continue; }
 
+		// discard if material not defined
+		if( materials[matName]["freq"] === undefined )
+		{
+			post(matName + " not in database " + "\n");
+			printMaterials();
+		}
+
 		// get face area
 		area = getTriangleArea(triangle);
 
@@ -405,20 +408,16 @@ function updateRoomArea()
 		for (var iBand = 0; iBand < freqBandCenters.length; iBand++) 
 		{
 
-			// debug
-			if( materials[matName]["freq"] === undefined )
-			{
-				post(matName + " not in database " + "\n");
-				printMaterials();
-			}
 			// get abs (avoid 0 absorption)
 			var abs = getInterpAbs(materials[matName]["abs"], materials[matName]["freq"], freqBandCenters[iBand]);
 
 			roomAreaWeighted[iBand] += abs * area;
 			// post(faceId + " " + iBand + " " + abs + ": " + floatRound(roomAreaWeighted[iBand], roundFactor) + "\n");
 		}
-		// post(faceId + " " + floatRound(area, roundFactor) + " " + arrayRound(roomAreaWeighted, roundFactor) + "\n");
 
+		// debug
+		// post(faceId + " " + floatRound(area, roundFactor) + " " + arrayRound(roomAreaWeighted, roundFactor) + "\n");
+		// printMaterials();
 	}
 }
 

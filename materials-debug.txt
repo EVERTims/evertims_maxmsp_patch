@@ -1,79 +1,63 @@
 /material/name a0s0
-/material/a0s0/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a0s0/absorption 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 /material/a0s0/scattering 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 
 /material/name a0s50
-/material/a0s50/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a0s50/absorption 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 /material/a0s50/scattering 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500
 
 /material/name a0s100
-/material/a0s100/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a0s100/absorption 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 /material/a0s100/scattering 1.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000
 
 /material/name a05s0
-/material/a05s0/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a05s0/absorption 0.050 0.050 0.050 0.050 0.050 0.050 0.050 0.050
 /material/a05s0/scattering 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 
 /material/name a25s0
-/material/a25s0/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a25s0/absorption 0.250 0.250 0.250 0.250 0.250 0.250 0.250 0.250
 /material/a25s0/scattering 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 
 /material/name a25s10
-/material/a25s0/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a25s0/absorption 0.250 0.250 0.250 0.250 0.250 0.250 0.250 0.250
 /material/a25s0/scattering 0.100 0.100 0.100 0.100 0.100 0.100 0.100 0.100
 
 /material/name a25s25
-/material/a25s25/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a25s25/absorption 0.250 0.250 0.250 0.250 0.250 0.250 0.250 0.250
 /material/a25s25/scattering 0.250 0.250 0.250 0.250 0.250 0.250 0.250 0.250
 
 /material/name a25s50
-/material/a25s50/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a25s50/absorption 0.250 0.250 0.250 0.250 0.250 0.250 0.250 0.250
 /material/a25s50/scattering 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500
 
 /material/name a25s75
-/material/a25s75/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a25s75/absorption 0.250 0.250 0.250 0.250 0.250 0.250 0.250 0.250
 /material/a25s75/scattering 0.750 0.750 0.750 0.750 0.750 0.750 0.750 0.750
 
 /material/name a25s100
-/material/a25s100/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a25s100/absorption 0.250 0.250 0.250 0.250 0.250 0.250 0.250 0.250
 /material/a25s100/scattering 1.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000
 
 /material/name a50s0
-/material/a50s0/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a50s0/absorption 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500
 /material/a50s0/scattering 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 
 /material/name a50s50
-/material/a50s50/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a50s50/absorption 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500
 /material/a50s50/scattering 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500
 
 /material/name a50s100
-/material/a50s100/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a50s100/absorption 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500
 /material/a50s100/scattering 1.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000
 
 /material/name a100s0
-/material/a100s0/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a100s0/absorption 1.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000
 /material/a100s0/scattering 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
 
 /material/name a100s50
-/material/a100s50/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a100s50/absorption 1.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000
 /material/a100s50/scattering 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500
 
 /material/name a100s100
-/material/a100s100/frequencies 125 250 500 1000 2000 4000 8000 16000
 /material/a100s100/absorption 1.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000
 /material/a100s100/scattering 1.000 1.000 1.000 1.000 1.000 1.000 1.000 1.000
