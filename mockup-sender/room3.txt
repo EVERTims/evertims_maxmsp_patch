@@ -1,0 +1,39 @@
+/room/1/spawn
+/room/1/definestart
+/room/1/face 1
+/room/1/face/1/material a_0
+/room/1/face/1/triangles/xyz 3.0 12.0 0.0 3.0 -12.0 0.0 -3.0 -12.0 0.0 
+/room/1/face 2
+/room/1/face/2/material a_0
+/room/1/face/2/triangles/xyz -3.0 -12.0 0.0 -3.0 12.0 0.0 3.0 12.0 0.0 
+/room/1/face 3
+/room/1/face/3/material a_0
+/room/1/face/3/triangles/xyz 3.0 12.0 6.0 -3.0 12.0 6.0 -3.0 -12.0 6.0 
+/room/1/face 4
+/room/1/face/4/material a_0
+/room/1/face/4/triangles/xyz -3.0 -12.0 6.0 3.0 -12.0 6.0 3.0 12.0 6.0 
+/room/1/face 5
+/room/1/face/5/material a_0
+/room/1/face/5/triangles/xyz 3.0 12.0 0.0 3.0 12.0 6.0 3.0 -12.0 6.0 
+/room/1/face 6
+/room/1/face/6/material a_0
+/room/1/face/6/triangles/xyz 3.0 -12.0 6.0 3.0 -12.0 0.0 3.0 12.0 0.0 
+/room/1/face 7
+/room/1/face/7/material a_0
+/room/1/face/7/triangles/xyz 3.0 -12.0 0.0 3.0 -12.0 6.0 -3.0 -12.0 6.0 
+/room/1/face 8
+/room/1/face/8/material a_0
+/room/1/face/8/triangles/xyz -3.0 -12.0 6.0 -3.0 -12.0 0.0 3.0 -12.0 0.0 
+/room/1/face 9
+/room/1/face/9/material a_0
+/room/1/face/9/triangles/xyz -3.0 -12.0 0.0 -3.0 -12.0 6.0 -3.0 12.0 6.0 
+/room/1/face 10
+/room/1/face/10/material a_0
+/room/1/face/10/triangles/xyz -3.0 12.0 6.0 -3.0 12.0 0.0 -3.0 -12.0 0.0 
+/room/1/face 11
+/room/1/face/11/material a_0
+/room/1/face/11/triangles/xyz 3.0 12.0 6.0 3.0 12.0 0.0 -3.0 12.0 0.0 
+/room/1/face 12
+/room/1/face/12/material a_0
+/room/1/face/12/triangles/xyz -3.0 12.0 0.0 -3.0 12.0 6.0 3.0 12.0 6.0 
+/room/1/defineover
